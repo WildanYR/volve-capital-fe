@@ -24,7 +24,6 @@ import { TableData } from '../TableData'
 import { Pagination } from '../Pagination'
 import { ProductSelect } from './ProductSelect'
 import type { Product } from '@/services/product.service'
-import { ScrollArea } from '../ui/scroll-area'
 
 interface ProductVariantSelectProps {
   isOpen: boolean
@@ -156,7 +155,7 @@ export function ProductVariantSelect({
           {isLoading ? (
             <TableLoading />
           ) : (
-            <ScrollArea>
+            <div className="overflow-auto">
               <div className="flex gap-3">
                 <Input
                   placeholder="Cari berdasarkan nama..."
@@ -187,7 +186,7 @@ export function ProductVariantSelect({
                   onPageChange={handlePaginationChange}
                 />
               </div>
-            </ScrollArea>
+            </div>
           )}
           <DialogFooter>
             <DialogClose asChild>
