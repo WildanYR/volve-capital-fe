@@ -24,6 +24,7 @@ import { useMemo, useState } from 'react'
 import { TableLoading } from '../TableLoading'
 import { TableData } from '../TableData'
 import { Pagination } from '../Pagination'
+import { ScrollArea } from '../ui/scroll-area'
 
 interface EmailSelectProps {
   isOpen: boolean
@@ -166,7 +167,7 @@ export function EmailSelect({
           {isLoading ? (
             <TableLoading />
           ) : (
-            <>
+            <ScrollArea>
               <div className="flex gap-3">
                 <Input
                   placeholder="Cari berdasarkan email..."
@@ -185,7 +186,7 @@ export function EmailSelect({
                   onPageChange={handlePaginationChange}
                 />
               </div>
-            </>
+            </ScrollArea>
           )}
           <DialogFooter>
             <DialogClose asChild>

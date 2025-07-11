@@ -29,6 +29,7 @@ import type { Device } from '@/services/device.service'
 import { EwalletTypeSelect } from './EwalletTypeSelect'
 import { SimcardSelect } from './SimcardSelect'
 import { DeviceSelect } from './DeviceSelect'
+import { ScrollArea } from '../ui/scroll-area'
 
 interface EwalletSelectProps {
   isOpen: boolean
@@ -245,7 +246,7 @@ export function EwalletSelect({
           {isLoading ? (
             <TableLoading />
           ) : (
-            <>
+            <ScrollArea>
               <div className="flex gap-3">
                 <div>
                   <p className="text-xs font-bold">Filter Jenis E-Wallet</p>
@@ -287,7 +288,7 @@ export function EwalletSelect({
                   onPageChange={handlePaginationChange}
                 />
               </div>
-            </>
+            </ScrollArea>
           )}
           <DialogFooter>
             <DialogClose asChild>

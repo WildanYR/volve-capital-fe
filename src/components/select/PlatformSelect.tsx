@@ -24,6 +24,7 @@ import { useMemo, useState } from 'react'
 import { TableLoading } from '../TableLoading'
 import { TableData } from '../TableData'
 import { Pagination } from '../Pagination'
+import { ScrollArea } from '../ui/scroll-area'
 
 interface PlatformSelectProps {
   isOpen: boolean
@@ -154,7 +155,7 @@ export function PlatformSelect({
           {isLoading ? (
             <TableLoading />
           ) : (
-            <>
+            <ScrollArea>
               <div className="flex gap-3">
                 <Input
                   placeholder="Cari berdasarkan nama..."
@@ -173,7 +174,7 @@ export function PlatformSelect({
                   onPageChange={handlePaginationChange}
                 />
               </div>
-            </>
+            </ScrollArea>
           )}
           <DialogFooter>
             <DialogClose asChild>

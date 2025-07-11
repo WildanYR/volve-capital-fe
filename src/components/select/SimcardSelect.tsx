@@ -24,6 +24,7 @@ import { useMemo, useState } from 'react'
 import { TableLoading } from '../TableLoading'
 import { TableData } from '../TableData'
 import { Pagination } from '../Pagination'
+import { ScrollArea } from '../ui/scroll-area'
 
 interface SimcardSelectProps {
   isOpen: boolean
@@ -165,7 +166,7 @@ export function SimcardSelect({
           {isLoading ? (
             <TableLoading />
           ) : (
-            <>
+            <ScrollArea>
               <div className="flex gap-3">
                 <Input
                   placeholder="Cari berdasarkan nama..."
@@ -186,7 +187,7 @@ export function SimcardSelect({
                   onPageChange={handlePaginationChange}
                 />
               </div>
-            </>
+            </ScrollArea>
           )}
           <DialogFooter>
             <DialogClose asChild>
