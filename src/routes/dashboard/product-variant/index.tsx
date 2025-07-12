@@ -87,9 +87,10 @@ function ProductVariantTableComponent() {
   }
 
   const clearFilter = () => {
-    setFilter({ product_id: '' })
+    const filterClear: ProductVariantFilter = { name: '', product_id: '' }
+    handleFilterChange(filterClear)
+    setFilter(filterClear)
     setProductFilterSelected(undefined)
-    handleFilterChange({ ...filter })
   }
 
   const handleProductFilterSelected = (product: Product) => {

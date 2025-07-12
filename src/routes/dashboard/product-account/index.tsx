@@ -93,9 +93,11 @@ function ProductAccountTableComponent() {
   }
 
   const clearFilter = () => {
-    setFilter({ product_id: '' })
+    const filterClear: ProductAccountFilter = { email_id: '', product_id: '' }
+    handleFilterChange(filterClear)
+    setFilter(filterClear)
     setProductFilterSelected(undefined)
-    handleFilterChange({ ...filter })
+    setEmailFilterSelected(undefined)
   }
 
   const handleEmailFilterSelected = (email: Email) => {

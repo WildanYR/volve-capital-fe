@@ -106,11 +106,16 @@ function EwalletTableComponent() {
   }
 
   const clearFilter = () => {
-    setFilter({ device_id: '', ewallet_type_id: '', simcard_id: '' })
+    const filterClear: EwalletFilter = {
+      device_id: '',
+      ewallet_type_id: '',
+      simcard_id: '',
+    }
+    handleFilterChange(filterClear)
+    setFilter(filterClear)
     setEwalletTypeFilterSelected(undefined)
     setSimcardFilterSelected(undefined)
     setDeviceFilterSelected(undefined)
-    handleFilterChange({ ...filter })
   }
 
   const handleEwalletTypeFilterSelected = (ewalletType: EwalletType) => {

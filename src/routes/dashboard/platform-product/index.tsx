@@ -88,9 +88,15 @@ function PlatformProductTableComponent() {
   }
 
   const clearFilter = () => {
-    setFilter({ platform_id: '' })
+    const filterClear: PlatformProductFilter = {
+      platform_id: '',
+      product_id: '',
+      product_name: '',
+    }
+    handleFilterChange(filterClear)
+    setFilter(filterClear)
     setPlatformFilterSelected(undefined)
-    handleFilterChange({ ...filter })
+    // clear filter produk
   }
 
   const handlePlatformFilterSelected = (platform: Platform) => {

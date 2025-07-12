@@ -93,10 +93,15 @@ function ProductAccountUserTableComponent() {
   }
 
   const clearFilter = () => {
-    setFilter({ product_id: '', email_id: '', name: '' })
+    const filterClear: ProductAccountUserFilter = {
+      email_id: '',
+      name: '',
+      product_id: '',
+    }
+    handleFilterChange(filterClear)
+    setFilter(filterClear)
     setEmailFilterSelected(undefined)
     setProductFilterSelected(undefined)
-    handleFilterChange({ ...filter })
   }
 
   const handleEmailFilterSelected = (email: Email) => {
@@ -263,9 +268,6 @@ function ProductAccountUserTableComponent() {
             Terapkan
           </Button>
           <Button onClick={() => clearFilter()}>Clear</Button>
-          <Button onClick={() => handleFilterChange({ ...filter })}>
-            Terapkan
-          </Button>
         </div>
         <Button asChild>
           <Link to="/dashboard/product-account-user/add">

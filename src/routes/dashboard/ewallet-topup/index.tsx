@@ -89,9 +89,10 @@ function EwalletTopupTableComponent() {
   }
 
   const clearFilter = () => {
-    setFilter({ ewallet_id: '' })
+    const filterClear: EwalletTopupFilter = { ewallet_id: '' }
+    handleFilterChange(filterClear)
+    setFilter(filterClear)
     setEwalletFilterSelected(undefined)
-    handleFilterChange({ ...filter })
   }
 
   const handleEwalletFilterSelected = (ewallet: Ewallet) => {

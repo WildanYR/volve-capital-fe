@@ -88,9 +88,10 @@ function TransactionTableComponent() {
   }
 
   const clearFilter = () => {
-    setFilter({ product_variant_id: '' })
+    const filterClear: TransactionFilter = { product_variant_id: '' }
+    handleFilterChange(filterClear)
+    setFilter(filterClear)
     setProductVariantFilterSelected(undefined)
-    handleFilterChange({ ...filter })
   }
 
   const handleProductVariantFilterSelected = (
