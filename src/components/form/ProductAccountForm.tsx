@@ -46,10 +46,7 @@ export function ProductAccountForm({
 }: ProductAccountFormProps) {
   const statusOptions = [
     { label: 'Kosong', value: 'KOSONG' },
-    { label: 'Akfif', value: 'AKTIF' },
     { label: 'Non-Aktif', value: 'NONAKTIF' },
-    { label: 'Reset Password', value: 'PASSWORD_RESET' },
-    { label: 'Langganan Habis', value: 'EXPIRED' },
   ]
 
   const [isEmailSelectOpen, setIsEmailSelectOpen] = useState(false)

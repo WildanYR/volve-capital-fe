@@ -42,6 +42,7 @@ export interface ProductAccount {
   product_variant: ProductVariant
   batch_start_date?: Date | null
   batch_end_date?: Date | null
+  user_count: number
 }
 
 export interface CreateProductAccountPayload {

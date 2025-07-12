@@ -186,6 +186,18 @@ function ProductAccountUserTableComponent() {
         header: 'Status',
         cell: (info) => info.getValue(),
       }),
+      productAccountUserColumnHelper.accessor(
+        (row) => row.product_account.batch_end_date,
+        {
+          header: 'Berakhir',
+          cell: (info) => {
+            const value = info.getValue()
+            if (value) return new Date(value).toLocaleString()
+
+            return '-'
+          },
+        },
+      ),
       productAccountUserColumnHelper.display({
         id: 'actions',
         header: 'Aksi',

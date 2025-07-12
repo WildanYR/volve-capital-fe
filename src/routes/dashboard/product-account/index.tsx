@@ -7,7 +7,14 @@ import {
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
-import { Edit, Trash, PlusCircle } from 'lucide-react'
+import {
+  Edit,
+  Trash,
+  PlusCircle,
+  ArrowUp,
+  ArrowDown,
+  ArrowUpDown,
+} from 'lucide-react'
 import { TableData } from '@/components/TableData'
 import { Suspense, useMemo, useState } from 'react'
 import { TableLoading } from '@/components/TableLoading'
@@ -51,7 +58,7 @@ function ProductAccountTableComponent() {
   const [emailFilterSelected, setEmailFilterSelected] = useState<Email>()
   const [productFilterSelected, setProductFilterSelected] = useState<Product>()
 
-  const { handleFilterChange, handlePaginationChange } =
+  const { handleFilterChange, handlePaginationChange, handleOrderChange } =
     createSearchHandlers<ProductAccountFilter>(navigate)
 
   const { data: productAccounts } = useSuspenseQuery({
@@ -131,6 +138,30 @@ function ProductAccountTableComponent() {
       }),
       productAccountColumnHelper.accessor('status', {
         header: 'Status',
+        cell: (info) => info.getValue(),
+      }),
+      productAccountColumnHelper.accessor('batch_end_date', {
+        header: () => (
+          <Button
+            variant="ghost"
+            onClick={() => handleOrderChange('batch_end_date')}
+          >
+            Berakhir
+            {searchParam.order_by === 'batch_end_date' &&
+            searchParam.order_direction === 'asc' ? (
+              <ArrowUp className="ml-2 size-4" />
+            ) : searchParam.order_by === 'batch_end_date' &&
+              searchParam.order_direction === 'desc' ? (
+              <ArrowDown className="ml-2 size-4" />
+            ) : (
+              <ArrowUpDown className="ml-2 size-4" />
+            )}
+          </Button>
+        ),
+        cell: (info) => info.getValue()?.toLocaleString(),
+      }),
+      productAccountColumnHelper.accessor('user_count', {
+        header: 'Jumlah user',
         cell: (info) => info.getValue(),
       }),
       productAccountColumnHelper.display({
