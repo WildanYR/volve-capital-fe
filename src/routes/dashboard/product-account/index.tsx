@@ -136,6 +136,26 @@ function ProductAccountTableComponent() {
         header: 'Produk',
         cell: (info) => info.getValue(),
       }),
+      productAccountColumnHelper.accessor('subscription_expiry', {
+        header: () => (
+          <Button
+            variant="ghost"
+            onClick={() => handleOrderChange('subscription_expiry')}
+          >
+            Subsc Berakhir
+            {searchParam.order_by === 'subscription_expiry' &&
+            searchParam.order_direction === 'asc' ? (
+              <ArrowUp className="ml-2 size-4" />
+            ) : searchParam.order_by === 'subscription_expiry' &&
+              searchParam.order_direction === 'desc' ? (
+              <ArrowDown className="ml-2 size-4" />
+            ) : (
+              <ArrowUpDown className="ml-2 size-4" />
+            )}
+          </Button>
+        ),
+        cell: (info) => info.getValue().toLocaleDateString(),
+      }),
       productAccountColumnHelper.accessor('status', {
         header: 'Status',
         cell: (info) => info.getValue(),
@@ -146,7 +166,7 @@ function ProductAccountTableComponent() {
             variant="ghost"
             onClick={() => handleOrderChange('batch_end_date')}
           >
-            Berakhir
+            Berakhir User
             {searchParam.order_by === 'batch_end_date' &&
             searchParam.order_direction === 'asc' ? (
               <ArrowUp className="ml-2 size-4" />
