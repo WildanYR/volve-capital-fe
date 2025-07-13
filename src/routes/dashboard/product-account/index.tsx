@@ -157,7 +157,20 @@ function ProductAccountTableComponent() {
         cell: (info) => info.getValue().toLocaleDateString(),
       }),
       productAccountColumnHelper.accessor('status', {
-        header: 'Status',
+        header: () => (
+          <Button variant="ghost" onClick={() => handleOrderChange('status')}>
+            Status
+            {searchParam.order_by === 'status' &&
+            searchParam.order_direction === 'asc' ? (
+              <ArrowUp className="ml-2 size-4" />
+            ) : searchParam.order_by === 'status' &&
+              searchParam.order_direction === 'desc' ? (
+              <ArrowDown className="ml-2 size-4" />
+            ) : (
+              <ArrowUpDown className="ml-2 size-4" />
+            )}
+          </Button>
+        ),
         cell: (info) => info.getValue(),
       }),
       productAccountColumnHelper.accessor('batch_end_date', {
